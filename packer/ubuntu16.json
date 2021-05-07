@@ -1,14 +1,27 @@
 {
 "builders": [
 {
+"account_file": "/tmp/tmp.1BXOMCv0Us/application_default_credentials.json",
 "type": "googlecompute",
-"project_id": "infra-312209",
+"project_id": "infra-189607",
 "image_name": "reddit-base-{{timestamp}}",
 "image_family": "reddit-base",
 "source_image_family": "ubuntu-1604-lts",
 "zone": "europe-west1-b",
-"ssh_username": "appuser",
+"ssh_username": "lysenko.olegano@gmail.com",
 "machine_type": "f1-micro"
+}
+],
+"provisioners": [
+{
+"type": "shell",
+"script": "scripts/install_ruby.sh",
+"execute_command": "sudo {{.Path}}"
+},
+{
+"type": "shell",
+"script": "scripts/install_mongodb.sh",
+"execute_command": "sudo {{.Path}}"
 }
 ]
 }
